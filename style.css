@@ -42,6 +42,8 @@ header {
     width: auto;
     /* Maintain aspect ratio */
     transition: 0.5s ease;
+    animation: none;
+    /* Base state for flicker */
 }
 
 .logo img:hover {
@@ -594,16 +596,6 @@ span {
     }
 }
 
-.lightning {
-    display: inline-block;
-    font-size: 5em;
-    /* Adjust size */
-    color: yellow;
-    /* Lightning color */
-    text-shadow: 0 0 10px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 0, 0.6);
-    animation: flicker 0.2s infinite alternate;
-}
-
 
 /* Skills Section */
 
@@ -749,18 +741,11 @@ span {
         border-radius: 0.5rem;
         border-bottom: 0.5rem solid #0692c2;
     }
-    .lightning {
-        font-size: 3em;
-        /* Smaller size for mobile */
-    }
 }
 
 @media (max-width: 768px) {
     nav {
         width: 60%;
-    }
-    .lightning {
-        font-size: 2.5em;
     }
 }
 
@@ -788,127 +773,6 @@ span {
 }
 
 
-/* Loading Animation Styles (Commented) */
-
-
-/*
-#loading-wrapper {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: #020207;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.loading-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: floatUpDown 2s ease-in-out infinite;
-}
-
-.loader-lightning {
-    font-size: 5em;
-    color: yellow;
-    text-shadow: 0 0 10px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 0, 0.6), 0 0 30px rgba(255, 255, 0, 0.4);
-    animation: lightningFlicker 1.5s infinite, rotate 3s ease-in-out infinite;
-    transform-origin: center;
-}
-
-.loading-name {
-    margin-top: 20px;
-    font-size: 1.8rem;
-    color: yellow;
-    letter-spacing: 0.5rem;
-    animation: pulse 2s ease-in-out infinite, slideInOut 2s ease-in-out infinite;
-}
-
-@keyframes lightningFlicker {
-    0% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-        filter: brightness(1);
-    }
-    25% {
-        opacity: 0.3;
-        transform: scale(0.95) rotate(-5deg);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.1) rotate(5deg);
-        filter: brightness(1.5);
-        text-shadow: 0 0 20px rgba(255, 255, 0, 0.8), 0 0 30px rgba(255, 255, 0, 0.6), 0 0 40px rgba(255, 255, 0, 0.4);
-    }
-    75% {
-        opacity: 0.2;
-        transform: scale(0.9) rotate(-3deg);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-        filter: brightness(1);
-    }
-}
-
-@keyframes floatUpDown {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes rotate {
-    0%,
-    100% {
-        transform: rotate(-5deg);
-    }
-    50% {
-        transform: rotate(5deg);
-    }
-}
-
-@keyframes slideInOut {
-    0%,
-    100% {
-        transform: translateX(0);
-        letter-spacing: 0.5rem;
-    }
-    50% {
-        transform: translateX(5px);
-        letter-spacing: 0.7rem;
-    }
-}
-
-@keyframes pulse {
-    0%,
-    100% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1);
-        text-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
-    }
-}
-
-
-/* Hide loading screen */
-
-.loaded {
-    opacity: 0;
-    pointer-events: none;
-}
-
-*/
 /* Projects Section */
 
 .projects {
@@ -1313,70 +1177,6 @@ span {
 }
 
 
-/* Lightning Flash Animation */
-
-.lightning-flash {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    pointer-events: none;
-    background: transparent;
-}
-
-.lightning-flash.active {
-    animation: backgroundFlash 0.5s ease-out;
-}
-
-@keyframes backgroundFlash {
-    0%,
-    100% {
-        background: transparent;
-    }
-    50% {
-        background: rgba(255, 255, 0, 0.05);
-    }
-}
-
-.lightning-symbol {
-    position: absolute;
-    font-size: 24px;
-    color: #ffeb3b;
-    text-shadow: 0 0 10px rgba(255, 235, 59, 0.9), 0 0 20px rgba(255, 235, 59, 0.7), 0 0 30px rgba(255, 235, 59, 0.5);
-    opacity: 0;
-    transform-origin: center;
-}
-
-@keyframes lightningSymbol {
-    0% {
-        opacity: 0;
-        transform: scale(0.5) rotate(-10deg);
-    }
-    20% {
-        opacity: 1;
-        transform: scale(1.2) rotate(10deg);
-    }
-    40% {
-        opacity: 0.7;
-        transform: scale(0.9) rotate(-5deg);
-    }
-    60% {
-        opacity: 1;
-        transform: scale(1.1) rotate(5deg);
-    }
-    80% {
-        opacity: 0.8;
-        transform: scale(0.95) rotate(-2deg);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(1) rotate(0);
-    }
-}
-
-
 /* Visit Project Button */
 
 .visit-btn {
@@ -1539,7 +1339,8 @@ span {
 }
 
 .others-card {
-    height: 450px;
+    min-height: 520px;
+    max-height: 650px;
     perspective: 1000px;
 }
 
@@ -1579,6 +1380,9 @@ span {
 .card-back {
     transform: rotateY(180deg);
     background: linear-gradient( 45deg, rgba(0, 0, 0, 0.3), rgba(6, 146, 194, 0.1));
+    overflow-y: auto;
+    max-height: 600px;
+    padding-bottom: 2.5rem;
 }
 
 .card-front i {
@@ -1704,17 +1508,16 @@ span {
         /* Increase gap between cards on mobile */
     }
     .others-card {
-        height: auto;
-        /* Allow height to adjust based on content */
         min-height: 400px;
-        /* Set minimum height */
-        max-height: 500px;
-        /* Set maximum height */
+        max-height: 600px;
     }
     .card-front,
     .card-back {
         padding: 2rem 1.5rem;
         /* Adjust padding for mobile */
+    }
+    .card-back {
+        max-height: 400px;
     }
     /* Publication Materials Card Specific Mobile Styles */
     .others-card .gallery {
@@ -1934,4 +1737,762 @@ span {
 
 .others-card .gallery img:hover::after {
     opacity: 1;
+}
+
+
+/* Sun Life Internship Section - Redesigned */
+
+.sunlife {
+    min-height: 100vh;
+    padding: 8rem 9% 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.sunlife-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 2rem 0;
+}
+
+.sunlife-intro-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto 2rem;
+    padding: 1rem;
+}
+
+.sunlife-intro-text {
+    flex: 2;
+    text-align: left;
+}
+
+.sunlife-intro-text p {
+    font-size: 1.7rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.sunlife-logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 250px;
+}
+
+.sunlife-logo img {
+    width: 100%;
+    filter: drop-shadow(0 0 12px #ffd70066);
+    transition: filter 0.3s;
+}
+
+.sunlife-logo img:hover {
+    filter: drop-shadow(0 0 18px #ffd70099);
+}
+
+
+/* Responsive adjustments for intro */
+
+@media (max-width: 900px) {
+    .sunlife-intro-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    .sunlife-intro-text {
+        text-align: center;
+    }
+    .sunlife-logo {
+        max-width: 200px;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .sunlife-intro-text p {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* Section Titles */
+
+.section-title {
+    font-size: 3.2rem;
+    color: #0692c2;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #0692c2, transparent);
+}
+
+
+/* Output Sections */
+
+.output-section {
+    margin-bottom: 4rem;
+}
+
+.output-grid {
+    display: grid;
+    gap: 3rem;
+}
+
+.output-category {
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(6, 146, 194, 0.3);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.output-category:hover {
+    border-color: #0692c2;
+    box-shadow: 0 0 20px rgba(6, 146, 194, 0.2);
+    transform: translateY(-5px);
+}
+
+.output-category h4 {
+    font-size: 2.2rem;
+    color: #0692c2;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.output-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hiring-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.output-item {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.output-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(6, 146, 194, 0.4);
+}
+
+.output-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.output-item:hover img {
+    filter: brightness(0.7);
+}
+
+.item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.output-item:hover .item-overlay {
+    transform: translateY(0);
+}
+
+.item-overlay span {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+
+/* Video Grid */
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.video-item {
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(6, 146, 194, 0.3);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.video-item:hover {
+    border-color: #0692c2;
+    box-shadow: 0 0 20px rgba(6, 146, 194, 0.3);
+    transform: translateY(-5px);
+}
+
+.video-thumbnail {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.video-thumbnail:hover img {
+    filter: brightness(0.7);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(6, 146, 194, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.video-thumbnail:hover .play-button {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.play-button i {
+    font-size: 2rem;
+    color: white;
+}
+
+.video-item h4 {
+    font-size: 1.8rem;
+    color: #0692c2;
+    margin-bottom: 1rem;
+}
+
+.video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(6, 146, 194, 0.1);
+    border: 2px solid #0692c2;
+    border-radius: 0.5rem;
+    color: #0692c2;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+}
+
+.video-link:hover {
+    background: #0692c2;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(6, 146, 194, 0.4);
+}
+
+
+/* Tools Section */
+
+.tools-section {
+    margin-top: 2rem;
+}
+
+.tools-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.tool-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(6, 146, 194, 0.3);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tool-card:hover {
+    border-color: #0692c2;
+    box-shadow: 0 0 20px rgba(6, 146, 194, 0.3);
+    transform: translateY(-5px);
+}
+
+.tool-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tool-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.tool-card h4 {
+    font-size: 2rem;
+    color: #0692c2;
+    margin-bottom: 1rem;
+}
+
+.tool-card p {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+}
+
+
+/* Animation Classes for Sun Life Section */
+
+.sunlife.scroll-scale,
+.sunlife-container.scroll-scale {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease;
+}
+
+.sunlife.scroll-scale.show,
+.sunlife-container.scroll-scale.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Responsive Adjustments for Sun Life Section */
+
+@media (max-width: 1200px) {
+    .video-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .tools-showcase {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .sunlife {
+        padding: 6rem 5% 2rem;
+    }
+    .sunlife-container {
+        gap: 3rem;
+    }
+    .section-title {
+        font-size: 2.8rem;
+    }
+    .output-category {
+        padding: 1.5rem;
+    }
+    .output-category h4 {
+        font-size: 2rem;
+    }
+    .output-items {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    .hiring-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    .output-item img {
+        height: 150px;
+    }
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .video-item {
+        padding: 1rem;
+    }
+    .video-thumbnail img {
+        height: 150px;
+    }
+    .play-button {
+        width: 50px;
+        height: 50px;
+    }
+    .play-button i {
+        font-size: 1.6rem;
+    }
+    .video-item h4 {
+        font-size: 1.6rem;
+    }
+    .video-link {
+        padding: 0.6rem 1.2rem;
+        font-size: 1.3rem;
+    }
+    .tools-showcase {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .tool-card {
+        padding: 1.5rem;
+    }
+    .tool-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+    .tool-card h4 {
+        font-size: 1.8rem;
+    }
+    .tool-card p {
+        font-size: 1.3rem;
+    }
+    .sunlife-intro p {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .output-items {
+        grid-template-columns: 1fr;
+    }
+    .hiring-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .output-item img {
+        height: 120px;
+    }
+    .video-thumbnail img {
+        height: 120px;
+    }
+    .section-title {
+        font-size: 2.4rem;
+    }
+    .output-category h4 {
+        font-size: 1.8rem;
+    }
+    .video-item h4 {
+        font-size: 1.4rem;
+    }
+    .tool-card h4 {
+        font-size: 1.6rem;
+    }
+    .tool-card p {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Internship Publication Materials Slider - Sliding Version */
+
+.pubmat-slider-container {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 2rem;
+    box-shadow: 0 8px 32px 0 rgba(6, 146, 194, 0.15);
+    padding: 2.5rem 2rem 3.5rem 2rem;
+    overflow: hidden;
+}
+
+.pubmat-slider {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.pubmat-slider-track {
+    display: flex;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    height: 100%;
+}
+
+.pubmat-slide {
+    min-width: 100%;
+    max-width: 100%;
+    height: 100%;
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    z-index: 1;
+    transition: box-shadow 0.3s;
+}
+
+.pubmat-slide img {
+    max-width: 100%;
+    max-height: 320px;
+    border-radius: 1.2rem;
+    box-shadow: 0 0 32px 0 rgba(6, 146, 194, 0.18), 0 2px 8px 0 rgba(0, 0, 0, 0.12);
+    object-fit: contain;
+    background: #fff;
+    transition: box-shadow 0.3s;
+}
+
+.pubmat-slide img:active,
+.pubmat-slide img:focus {
+    box-shadow: 0 0 48px 0 #0692c2aa, 0 2px 12px 0 rgba(0, 0, 0, 0.18);
+}
+
+.pubmat-caption {
+    margin-top: 1.5rem;
+    font-size: 1.7rem;
+    color: #ffd700;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 0 2px 8px #000, 0 0 8px #0692c2;
+    letter-spacing: 0.04em;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 0.7rem;
+    padding: 0.5rem 1.5rem;
+    display: inline-block;
+}
+
+.pubmat-slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(6, 146, 194, 0.85);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 8px #0692c2aa;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.pubmat-slider-arrow.prev {
+    left: 10px;
+}
+
+.pubmat-slider-arrow.next {
+    right: 10px;
+}
+
+.pubmat-slider-arrow:hover {
+    background: #ffd700;
+    color: #0692c2;
+    transform: translateY(-50%) scale(1.12);
+}
+
+.pubmat-slider-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+    z-index: 12;
+}
+
+.pubmat-slider-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #0692c2;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s, transform 0.2s;
+}
+
+.pubmat-slider-dot.active {
+    background: #ffd700;
+    opacity: 1;
+    transform: scale(1.18);
+    border-color: #ffd700;
+}
+
+@media (max-width: 900px) {
+    .pubmat-slider-container {
+        max-width: 98vw;
+        padding: 1.5rem 0.5rem 2.5rem 0.5rem;
+    }
+    .pubmat-slider {
+        height: 320px;
+    }
+    .pubmat-slide img {
+        max-height: 220px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pubmat-slider {
+        height: 220px;
+    }
+    .pubmat-slide img {
+        max-height: 120px;
+    }
+    .pubmat-caption {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.7rem;
+    }
+    .pubmat-slider-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+    }
+    .pubmat-slider-dot {
+        width: 9px;
+        height: 9px;
+    }
+}
+
+
+/* --- Styles for single, centered gallery image --- */
+
+.others-card .gallery.issp-gallery {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.others-card .gallery.issp-gallery img {
+    width: 90%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 1px solid #0692c2;
+    transition: transform 0.3s ease;
+}
+
+.others-card .gallery.issp-gallery img:hover {
+    transform: scale(1.05);
+}
+
+
+/* --- Two-Column Layout for ISSP Card --- */
+
+.issp-card-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.issp-content-wrapper {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+    /* Align items to the top */
+}
+
+.issp-image-container {
+    flex: 1 1 40%;
+    /* Allow shrinking and growing */
+    min-width: 180px;
+    /* Prevent image from getting too small */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.issp-image-container img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 1rem;
+}
+
+.issp-text-container {
+    flex: 1 1 55%;
+    /* Allow text area to grow and shrink, with more weight */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    overflow-y: auto;
+    /* Allow text to scroll if it overflows */
+    padding-right: 1rem;
+    /* Add some padding for the scrollbar */
+}
+
+.issp-text-container p {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.issp-text-container .visit-btn {
+    align-self: flex-start;
+    /* Align button to the left */
+}
+
+
+/* Responsive adjustments for the two-column layout */
+
+@media (max-width: 768px) {
+    .issp-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        /* Center items on mobile */
+    }
+    .issp-image-container {
+        flex-basis: auto;
+        /* Reset flex basis */
+        width: 80%;
+        margin-bottom: 1.5rem;
+        height: auto;
+        /* Allow image to define its height */
+    }
+    .issp-text-container {
+        width: 100%;
+        padding-right: 0;
+        text-align: center;
+        height: auto;
+        /* Allow text to define its height */
+        flex-shrink: 0;
+        /* Prevent text container from shrinking */
+    }
+    .issp-text-container .visit-btn {
+        align-self: center;
+        /* Center button on mobile */
+    }
 }

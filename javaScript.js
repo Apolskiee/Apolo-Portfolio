@@ -15,23 +15,25 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    const lightning = document.querySelector(".lightning");
+    const logoImage = document.querySelector(".logo img");
 
-    function randomFlicker() {
-        const randomDelay = Math.random() * 2000 + 500; // Between 500ms - 2500ms
-        lightning.style.animation = `flicker 0.2s infinite alternate`;
+    if (logoImage) {
+        function randomFlicker() {
+            const randomDelay = Math.random() * 2000 + 500; // Between 500ms - 2500ms
+            logoImage.style.animation = `flicker 0.2s infinite alternate`;
 
-        setTimeout(() => {
-            lightning.style.animation = "none"; // Stop flickering
-            setTimeout(randomFlicker, randomDelay); // Restart after delay
-        }, 200);
+            setTimeout(() => {
+                logoImage.style.animation = "none"; // Stop flickering
+                setTimeout(randomFlicker, randomDelay); // Restart after delay
+            }, 200);
+        }
+
+        randomFlicker();
     }
-
-    randomFlicker();
 });
 
 let typingText = document.querySelector(".typing-text span");
-let roles = ["Project Manager", "Web Developer", "UI/UX Designer", "Editor", "Published Author"];
+let roles = ["Project Manager", "Web Developer", "UI/UX Designer", "Published Author", "Multimedia Artist"];
 let index = 0,
     charIndex = 0;
 
@@ -142,7 +144,7 @@ animate();
 document.addEventListener("DOMContentLoaded", function() {
     // Elements to animate
     const animatedElements = document.querySelectorAll(
-        '.home-content, .home-img, .skills-card, .heading'
+        '.home-content, .home-img, .skills-card, .heading, .sunlife-card'
     );
 
     const observerOptions = {
@@ -215,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Update active nav link based on scroll position with smooth transition
 function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section.home, section.skills');
+    const sections = document.querySelectorAll('section.home, section.skills, section.projects, section.others, section.sunlife');
     const navLinks = document.querySelectorAll('nav a');
 
     sections.forEach(section => {
@@ -294,21 +296,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-// Loading Animation (Commented)
-/*
-document.addEventListener('DOMContentLoaded', function() {
-    const loadingWrapper = document.getElementById('loading-wrapper');
-    
-    setTimeout(() => {
-        loadingWrapper.classList.add('loaded');
-        
-        setTimeout(() => {
-            loadingWrapper.style.display = 'none';
-        }, 500);
-    }, 2500);
-});
-*/
 
 // Enhanced Scroll Animation
 function scrollAnimation() {
@@ -425,116 +412,6 @@ window.addEventListener('scroll', scrollAnimation);
 // Initial check for elements in view
 window.addEventListener('load', scrollAnimation);
 
-// Add this to your existing JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    const lightningTrigger = document.getElementById('lightning-trigger');
-    const lightningFlash = document.getElementById('lightning-flash');
-
-    function createLightningSymbol(x, y, size, delay) {
-        const symbol = document.createElement('div');
-        symbol.className = 'lightning-symbol';
-        symbol.textContent = '⚡︎';
-        symbol.style.left = x + '%';
-        symbol.style.top = y + '%';
-        symbol.style.fontSize = size + 'px';
-
-        // Create unique animation name
-        const animationName = `lightningSymbol${Math.random().toString(36).substr(2, 9)}`;
-        const keyframes = `
-            @keyframes ${animationName} {
-                0% {
-                    opacity: 0;
-                    transform: scale(0.5) rotate(${-20 + Math.random() * 40}deg);
-                }
-                20% {
-                    opacity: 1;
-                    transform: scale(${1.1 + Math.random() * 0.3}) rotate(${-20 + Math.random() * 40}deg);
-                }
-                40% {
-                    opacity: ${0.6 + Math.random() * 0.4};
-                    transform: scale(${0.8 + Math.random() * 0.3}) rotate(${-20 + Math.random() * 40}deg);
-                }
-                60% {
-                    opacity: 1;
-                    transform: scale(${1 + Math.random() * 0.3}) rotate(${-20 + Math.random() * 40}deg);
-                }
-                80% {
-                    opacity: ${0.7 + Math.random() * 0.3};
-                    transform: scale(${0.9 + Math.random() * 0.2}) rotate(${-10 + Math.random() * 20}deg);
-                }
-                100% {
-                    opacity: 0;
-                    transform: scale(1) rotate(0);
-                }
-            }
-        `;
-
-        // Add keyframes to document
-        const style = document.createElement('style');
-        style.innerHTML = keyframes;
-        document.head.appendChild(style);
-
-        // Apply animation
-        symbol.style.animation = `${animationName} ${0.3 + Math.random() * 0.2}s ease-out ${delay}s`;
-
-        lightningFlash.appendChild(symbol);
-
-        // Cleanup
-        setTimeout(() => {
-            symbol.remove();
-            style.remove();
-        }, (delay + 0.5) * 1000);
-    }
-
-    function createLightningStrike() {
-        // Clear existing effects
-        lightningFlash.classList.remove('active');
-        lightningFlash.innerHTML = '';
-
-        // Force reflow
-        void lightningFlash.offsetWidth;
-
-        // Add flash effect
-        lightningFlash.classList.add('active');
-
-        // Create main lightning path
-        const symbolCount = 15 + Math.floor(Math.random() * 10);
-        let currentY = 0;
-        let currentX = 50;
-
-        for (let i = 0; i < symbolCount; i++) {
-            // Create zigzag pattern
-            currentX += (Math.random() * 10) - 5;
-            currentY += (100 / symbolCount) + (Math.random() * 2);
-
-            // Main lightning bolt
-            const size = 24 + Math.random() * 12;
-            const delay = (i * 0.02) + (Math.random() * 0.02);
-            createLightningSymbol(currentX, currentY, size, delay);
-
-            // Add random branches
-            if (Math.random() < 0.3) {
-                const branchX = currentX + (Math.random() * 20) - 10;
-                const branchY = currentY;
-                const branchSize = size * 0.7;
-                const branchDelay = delay + 0.05;
-                createLightningSymbol(branchX, branchY, branchSize, branchDelay);
-            }
-        }
-
-        // Cleanup
-        setTimeout(() => {
-            lightningFlash.classList.remove('active');
-            lightningFlash.innerHTML = '';
-        }, 1000);
-    }
-
-    lightningTrigger.addEventListener('click', function(e) {
-        e.preventDefault();
-        createLightningStrike();
-    });
-});
-
 // Lightbox functionality
 document.addEventListener('DOMContentLoaded', function() {
     const lightbox = document.querySelector('.lightbox');
@@ -587,3 +464,84 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Internship Pubmat Slider - Sliding Carousel
+function initPubmatSlider() {
+    const slider = document.querySelector('.pubmat-slider');
+    const track = slider ? slider.querySelector('.pubmat-slider-track') : null;
+    if (!slider || !track) return;
+    const slides = Array.from(track.querySelectorAll('.pubmat-slide'));
+    const prevBtn = document.querySelector('.pubmat-slider-arrow.prev');
+    const nextBtn = document.querySelector('.pubmat-slider-arrow.next');
+    const dotsContainer = document.querySelector('.pubmat-slider-dots');
+    let current = 0;
+    let autoPlayTimer = null;
+    const SLIDE_DURATION = 5000; // ms
+
+    // Create dots
+    dotsContainer.innerHTML = '';
+    slides.forEach((_, idx) => {
+        const dot = document.createElement('div');
+        dot.className = 'pubmat-slider-dot' + (idx === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goToSlide(idx));
+        dotsContainer.appendChild(dot);
+    });
+    const dots = Array.from(dotsContainer.querySelectorAll('.pubmat-slider-dot'));
+
+    // Set initial position
+    function updateSlider() {
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[current].classList.add('active');
+    }
+
+    function goToSlide(idx) {
+        current = idx;
+        updateSlider();
+        resetAutoPlay();
+    }
+
+    function nextSlide() {
+        current = (current + 1) % slides.length;
+        updateSlider();
+        resetAutoPlay();
+    }
+
+    function prevSlide() {
+        current = (current - 1 + slides.length) % slides.length;
+        updateSlider();
+        resetAutoPlay();
+    }
+
+    function resetAutoPlay() {
+        if (autoPlayTimer) clearInterval(autoPlayTimer);
+        autoPlayTimer = setInterval(() => {
+            current = (current + 1) % slides.length;
+            updateSlider();
+        }, SLIDE_DURATION);
+    }
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    resetAutoPlay();
+    // Pause on hover
+    slider.addEventListener('mouseenter', () => clearInterval(autoPlayTimer));
+    slider.addEventListener('mouseleave', resetAutoPlay);
+    // Touch swipe support
+    let startX = null;
+    track.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+    });
+    track.addEventListener('touchend', e => {
+        if (startX === null) return;
+        let endX = e.changedTouches[0].clientX;
+        let diff = endX - startX;
+        if (Math.abs(diff) > 40) {
+            if (diff > 0) prevSlide();
+            else nextSlide();
+        }
+        startX = null;
+    });
+    // Initial render
+    updateSlider();
+}
+document.addEventListener('DOMContentLoaded', initPubmatSlider);
